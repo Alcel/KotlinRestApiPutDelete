@@ -7,6 +7,6 @@ import retrofit2.http.POST
 
 interface RestApi {
 
-    @POST("/api/inmuebles")
+    @POST("inmuebles")
     fun addUser(@Body userData: Inmueble): Call<Inmueble>
 }

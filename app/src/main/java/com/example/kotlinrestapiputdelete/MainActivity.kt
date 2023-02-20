@@ -11,17 +11,17 @@ class MainActivity : AppCompatActivity() {
     }
     fun addDummyInmueble() {
         val apiService = RestApiService()
-        val userInfo = Inmueble(titulo = "Pisito a pie de playa",
-             precio = 80822f,
-             descripcion = "Pisito muy mono con grandes oportunidades, perteneciente a mi fallecida Paca. ¡Hay Paca! ",
-             metrosConstruidos = 70,
-             metrosUtiles = 55,
-             ubicacion = "Jaen,Malasangre Calle Camilo Sesto nº76",
-             zona ="Parque industrial de Malasangre",
-             fechaPublicacion ="2023-03-04",
-             habitaciones = 1,
-             bannos = 0,
-             idInmueble = 55)
+        val userInfo = Inmueble("Pisito a pie de playa",
+             80822f,
+             "Pisito muy mono con grandes oportunidades, perteneciente a mi fallecida Paca. ¡Hay Paca! ",
+             70,
+              55,
+             "Jaen,Malasangre Calle Camilo Sesto nº76",
+             "Parque industrial de Malasangre",
+             "2023-03-04",
+              1,
+              0,
+              55)
 
         apiService.addUser(userInfo) {
             if (it?.idInmueble != null) {
