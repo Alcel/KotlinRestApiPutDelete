@@ -12,8 +12,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val restApi:RestApi?=null
 
-        annadir()
+        //annadir()
+        //delete(1)
     }
     fun annadir(){
         var mAPIService: RestApi? = null
@@ -42,6 +44,38 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<Inmueble>, response: Response<Inmueble>) {
 
               //  Log.i("", "post submitted to API." + response.body()!!)
+
+                if (response.isSuccessful()) {
+
+                    Log.i("", "post registration to API" + response.body()!!.toString())
+
+
+                }
+            }
+
+            override fun onFailure(call: Call<Inmueble>, t: Throwable) {
+                println("HAHAA")
+            }
+        })
+
+    }
+    fun delete(inter:Int){
+        var mAPIService: RestApi? = null
+
+
+
+        //After oncreate
+
+        mAPIService = RestApi.Utils.apiService
+
+        //Some Button click
+
+        mAPIService!!.deleteItem(inter)?.enqueue(object :
+            Callback<Inmueble> {
+
+            override fun onResponse(call: Call<Inmueble>, response: Response<Inmueble>) {
+
+                //  Log.i("", "post submitted to API." + response.body()!!)
 
                 if (response.isSuccessful()) {
 
