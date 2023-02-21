@@ -1,23 +1,23 @@
 package com.example.kotlinrestapiputdelete
 
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class RestApiService {
-    fun addUser(userData: Inmueble, onResult: (Inmueble?) -> Unit){
-        val retrofit = ServiceBuilder.buildService(RestApi::class.java)
-        retrofit.addUser(userData).enqueue(
-            object : Callback<Inmueble> {
-                override fun onFailure(call: Call<Inmueble>, t: Throwable) {
-                    onResult(null)
-                }
-                override fun onResponse( call: Call<Inmueble>, response: Response<Inmueble>) {
-                    val addedUser = response.body()
-                    onResult(addedUser)
-                }
-            }
-        )
-    }
+
+
+        private val retrofit = Retrofit.Builder()
+            .baseUrl("http://10.0.2.2:8080/api/") // change this IP for testing by your actual machine IP
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+
+
+
+
+
 }
